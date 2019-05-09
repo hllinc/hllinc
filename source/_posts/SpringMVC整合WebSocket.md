@@ -1,7 +1,7 @@
 ---
 title: SpringMVC整合WebSocket
 date: 2019-05-09 10:45:19
-tags:
+tags: Java
 ---
 Spring4已经加入了对Websocket支持。
 1. 引入Spring4的jar包，以及Spring websocket的jar包
