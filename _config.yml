@@ -5,7 +5,7 @@
 # Site
 title: Hllinc
 subtitle: hllinc的博客
-description: hllinc java web angular node ionic
+description: 不积跬步，无以至千里
 keywords: hllinc java web angular node ionic
 author: Hllinc
 language:
@@ -73,7 +73,7 @@ pagination_dir: page
 # Extensions
 ## Plugins: https://hexo.io/plugins/
 ## Themes: https://hexo.io/themes/
-theme: next
+theme: hexo-theme-next
 
 # Deployment
 ## Docs: https://hexo.io/docs/deployment.html
