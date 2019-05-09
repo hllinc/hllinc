@@ -880,7 +880,7 @@ local_search:
 # See: https://chatra.io
 # Dashboard: https://app.chatra.io/settings/general
 chatra:
-  enable: true
+  enable: false
   async: true
   id: # visit Dashboard to get your ChatraID
   #embed: # unfinished experimental feature for developers, See: https://chatra.io/help/api/#injectto
