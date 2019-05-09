@@ -1,7 +1,8 @@
 ---
 title: Phonegap jQueryMobile 在线应用拍照、相册选择上传+预览
 date: 2015-07-07 10:53:25
-tags: WebApp
+tags:
+- WebApp
 ---
 拍照上传以及从相册中选择图片上传是大多数手机应用的典型功能，这几天在做一个移动端的项目，其中就用到该功能。
   

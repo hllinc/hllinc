@@ -13,7 +13,8 @@
     <url>%2Fpublic%2F2019%2F05%2F09%2FSpringBoot%E5%AE%9E%E7%8E%B0WebSocket%E8%AE%B0%E5%BD%95%2F</url>
     <content type="text"><![CDATA[持续更新中…]]></content>
       <tags>
-        <tag>Java WebSocket</tag>
+        <tag>Java</tag>
+        <tag>WebSocket</tag>
       </tags>
   </entry>
   <entry>
@@ -21,7 +22,8 @@
     <url>%2Fpublic%2F2019%2F05%2F09%2F%E5%9F%BA%E4%BA%8Ejetspeed%E9%97%A8%E6%88%B7%E5%B9%B3%E5%8F%B0%E4%BA%8C%E6%AC%A1%E5%BC%80%E5%8F%91%E8%AE%B0%E5%BD%95%2F</url>
     <content type="text"><![CDATA[持续更新中…]]></content>
       <tags>
-        <tag>jetspeed 二次开发</tag>
+        <tag>jetspeed</tag>
+        <tag>二次开发</tag>
       </tags>
   </entry>
   <entry>
@@ -37,7 +39,8 @@
     <url>%2Fpublic%2F2019%2F05%2F09%2F%E5%BC%80%E6%BA%90%E4%BF%A1%E6%81%AF%E5%8F%91%E5%B8%83%E7%B3%BB%E7%BB%9FPublicCMS%E4%BA%8C%E6%AC%A1%E5%BC%80%E5%8F%91%E8%AE%B0%E5%BD%95%2F</url>
     <content type="text"><![CDATA[持续更新中…]]></content>
       <tags>
-        <tag>CMS 二次开发</tag>
+        <tag>二次开发</tag>
+        <tag>CMS</tag>
       </tags>
   </entry>
   <entry>
@@ -45,7 +48,8 @@
     <url>%2Fpublic%2F2019%2F05%2F09%2FSpringBoot%E5%AE%9E%E7%8E%B0OAuth2%E8%AE%B0%E5%BD%95%2F</url>
     <content type="text"><![CDATA[持续更新中…]]></content>
       <tags>
-        <tag>Java OAuth2</tag>
+        <tag>Java</tag>
+        <tag>OAuth2</tag>
       </tags>
   </entry>
   <entry>
@@ -53,7 +57,8 @@
     <url>%2Fpublic%2F2019%2F05%2F09%2FSpringBoot-Spring-Data-JPA%E6%A1%86%E6%9E%B6%E6%90%AD%E5%BB%BA%E8%AE%B0%E5%BD%95%2F</url>
     <content type="text"><![CDATA[持续更新中…]]></content>
       <tags>
-        <tag>Java JPA</tag>
+        <tag>Java</tag>
+        <tag>JPA</tag>
       </tags>
   </entry>
   <entry>
@@ -69,7 +74,8 @@
     <url>%2Fpublic%2F2019%2F05%2F09%2FSpringMVC-Mybatis%E6%A1%86%E6%9E%B6%E6%90%AD%E5%BB%BA%E8%AE%B0%E5%BD%95%2F</url>
     <content type="text"><![CDATA[持续更新中…]]></content>
       <tags>
-        <tag>Java Mybatis</tag>
+        <tag>Java</tag>
+        <tag>Mybatis</tag>
       </tags>
   </entry>
   <entry>
@@ -109,7 +115,8 @@
     <url>%2Fpublic%2F2015%2F10%2F13%2FSpringMVC%E6%95%B4%E5%90%88WebSocket%2F</url>
     <content type="text"><![CDATA[Spring4已经加入了对Websocket支持。 引入Spring4的jar包，以及Spring websocket的jar包 web.xml文件用3.0版本。 1234567&lt; web-app xmlns:xsi= “http://www.w3.org/2001/XMLSchema-instance” xmlns= “http://java.sun.com/xml/ns/javaee” xmlns:web= “http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd” xsi:schemaLocation= “http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd” version= “3.0” &gt; Tomcat用7或以上，JDK用7或以上，其他Spring配置文件按默认即可，这里用的是注解方式。 WebSocketConfig.java 123456789101112131415161718192021222324package com.noter.websocket.config;import org.springframework.context.annotation.Bean;import org.springframework.context.annotation.Configuration;import org.springframework.web.servlet.config.annotation.EnableWebMvc;import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;import org.springframework.web.socket.WebSocketHandler;import org.springframework.web.socket.config.annotation.EnableWebSocket;import org.springframework.web.socket.config.annotation.WebSocketConfigurer;import org.springframework.web.socket.config.annotation.WebSocketHandlerRegistry;import com.noter.websocket.handler.SystemWebSocketHandler;@Configuration@EnableWebMvc@EnableWebSocketpublic class WebSocketConfig extends WebMvcConfigurerAdapter implements WebSocketConfigurer &#123; @Override public void registerWebSocketHandlers(WebSocketHandlerRegistry registry) &#123; registry.addHandler(systemWebSocketHandler(), “/webSocketServer.do” ); &#125; @Bean public WebSocketHandler systemWebSocketHandler() &#123; return new SystemWebSocketHandler(); &#125;&#125; SystemWebSocketHandler.java 1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950515253package com.noter.websocket.handler;import java.io.IOException;import java.util.ArrayList;import org.springframework.web.socket.CloseStatus;import org.springframework.web.socket.TextMessage;import org.springframework.web.socket.WebSocketHandler;import org.springframework.web.socket.WebSocketMessage;import org.springframework.web.socket.WebSocketSession;public class SystemWebSocketHandler implements WebSocketHandler &#123; private static final ArrayList&lt;WebSocketSession&gt; users = new ArrayList&lt;WebSocketSession&gt;();; @Override public void afterConnectionEstablished(WebSocketSession session) throws Exception &#123; System. out.println( “ConnectionEstablished” ); users.add(session); &#125; @Override public void handleMessage(WebSocketSession session, WebSocketMessage&lt;?&gt; message) throws Exception &#123; System. out.println( “session id:” + session.getId()); sendMessageToUsers(session.getId(),(TextMessage) message); &#125; @Override public void handleTransportError(WebSocketSession session, Throwable exception) throws Exception &#123; if(session.isOpen())&#123; session.close(); &#125; users.remove(session); &#125; @Override public void afterConnectionClosed(WebSocketSession session, CloseStatus closeStatus) throws Exception &#123; users.remove(session); &#125; @Override public boolean supportsPartialMessages() &#123; return false; &#125; /** * 给所有在线用户发送消息 * * @param message */ public void sendMessageToUsers(String excep, TextMessage message) &#123; for (WebSocketSession user : users) &#123; try &#123; if (user.isOpen()&amp;&amp; !user.getId().equals(excep)) &#123; user.sendMessage(message); &#125; &#125; catch (IOException e) &#123; e.printStackTrace(); &#125; &#125; &#125; &#125; 前台JSP代码： 123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657585960616263646566676869707172737475767778798081828384858687888990919293949596979899100101102103104105106107108109110111112113114115116117118119120121122123124125126127128129130131132133134135136137138139140141142143144145146147148149150151152153154155156157158159160161162163164165166167168169&lt;%@ page language = “java” contentType= “text/html; charset=UTF-8” pageEncoding= “UTF-8” %&gt;&lt;% String path = request.getContextPath(); String basePath = request.getScheme() + “://” + request.getServerName() + “:” + request.getServerPort() + path + “/”;%&gt;&lt;! DOCTYPE html PUBLIC “-//W3C//DTD HTML 4.01 Transitional//EN” “http://www.w3.org/TR/html4/loose.dtd” &gt;&lt; html&gt;&lt; head&gt;&lt; meta http-equiv= “Content-Type” content = “text/html; charset=UTF-8”&gt;&lt; title&gt; WebSocket/SockJS Echo Sample (Adapted from Tomcat’s echo sample)&lt;/ title&gt; &lt;style type = “text/css”&gt; #connect-container &#123; float: left; width: 400px &#125; #connect-container div &#123; padding: 5px; &#125; #console-container &#123; float: left; margin-left: 15px; width: 400px; &#125; #console &#123; border: 1px solid #CCCCCC ; border-right-color: #999999; border-bottom-color: #999999; height: 170px; overflow-y: scroll; padding: 5px; width: 100%; &#125; #console p &#123; padding: 0; margin: 0; &#125; &lt;/style &gt; &lt;script src = “../assets/js/sockjs-0.3.min.js”&gt;&lt;/ script &gt; &lt;script type = “text/javascript”&gt; var ws = null; var url = null; var transports = []; var basePath = “ &lt;%= basePath%&gt; “; var wsPath = basePath.replace( “http://”, “ws://” ); function setConnected(connected) &#123; document.getElementById( ‘connect’ ).disabled = connected; document.getElementById( ‘disconnect’ ).disabled = !connected; document.getElementById( ‘echo’ ).disabled = !connected; &#125; function connect() &#123; if (!url) &#123; alert( ‘Select whether to use W3C WebSocket or SockJS’); return ; &#125; ws = new WebSocket(wsPath+‘webSocketServer.do’ ); /* (url.indexOf(‘sockjs’) != -1) ? new SockJS(url, undefined, &#123;protocols_whitelist: transports&#125;) : */ ws.onopen = function () &#123; setConnected( true ); log( ‘Info: connection opened.’ ); &#125;; ws.onmessage = function (event) &#123; for ( var i in event.originalTarget)&#123; console.log( “event[“ +i+“]:” +event.originalTarget[i]); &#125; log( ‘Received: ‘ + event.data); &#125;; ws.onclose = function (event) &#123; setConnected( false ); log( ‘Info: connection closed.’ ); log(event); &#125;; &#125; function disconnect() &#123; if (ws != null) &#123; ws.close(); ws = null ; &#125; setConnected( false ); &#125; function echo() &#123; if (ws != null) &#123; var message = document.getElementById(‘message’ ).value; log( ‘Sent: ‘ + message); ws.send(message); &#125; else &#123; alert( ‘connection not established, please connect.’); &#125; &#125; function updateUrl(urlPath) &#123; if (urlPath.indexOf(‘sockjs’ ) != -1) &#123; url = urlPath; document.getElementById(‘sockJsTransportSelect’ ).style.visibility = ‘visible’; &#125; else &#123; if (window.location.protocol == ‘http:’) &#123; url = ‘ws://’ + window.location.host + urlPath; &#125; else &#123; url = ‘wss://’ + window.location.host + urlPath; &#125; document.getElementById(‘sockJsTransportSelect’ ).style.visibility = ‘hidden’; &#125; &#125; function updateTransport(transport) &#123; transports = (transport == ‘all’ ) ? [] : [transport]; &#125; function log(message) &#123; var console = document.getElementById( ‘console’); var p = document.createElement( ‘p’); p.style.wordWrap = ‘break-word’ ; p.appendChild(document.createTextNode(message)); console.appendChild(p); while (console.childNodes.length &gt; 25) &#123; console.removeChild(console.firstChild); &#125; console.scrollTop = console.scrollHeight; &#125; &lt;/script &gt;&lt;/ head&gt;&lt; body&gt;&lt; noscript&gt;&lt; h2 style=” color: #ff0000“ &gt;Seems your browser doesn’t support Javascript! Websockets rely on Javascript being enabled. Please enable Javascript and reload this page!&lt;/ h2&gt;&lt;/ noscript &gt;&lt; div&gt; &lt;div id = “connect-container”&gt; &lt;input id = “radio1” type= “radio” name= “group1” onclick =“updateUrl(‘ $&#123;contextPath&#125; /webSocketServer’);”&gt; &lt;label for = “radio1”&gt; W3C WebSocket&lt;/ label &gt; &lt;br &gt; &lt;input id = “radio2” type= “radio” name= “group1” onclick =“updateUrl(‘/spring-websocket-test/sockjs/echo’);” &gt; &lt;label for = “radio2”&gt; SockJS&lt;/ label &gt; &lt;div id = “sockJsTransportSelect” style=” visibility: hidden;” &gt; &lt;span &gt;SockJS transport: &lt;/ span&gt; &lt;select onchange =“updateTransport(this.value)” &gt; &lt;option value = “all”&gt; all&lt;/ option &gt; &lt;option value = “websocket”&gt; websocket&lt;/ option &gt; &lt;option value = “xhr-polling”&gt; xhr-polling &lt;/option &gt; &lt;option value= “jsonp-polling” &gt;jsonp-polling &lt;/ option&gt; &lt;option value= “xhr-streaming” &gt;xhr-streaming &lt;/ option&gt; &lt;option value= “iframe-eventsource” &gt;iframe– eventsource&lt;/ option &gt; &lt;option value= “iframe-htmlfile” &gt;iframe– htmlfile&lt;/ option &gt; &lt;/ select&gt; &lt;/div &gt; &lt;div &gt; &lt;button id = “connect” onclick =“connect();” &gt;Connect &lt;/ button&gt; &lt;button id = “disconnect” disabled= “disabled” onclick =“disconnect();” &gt;Disconnect &lt;/ button&gt; &lt;/div &gt; &lt;div &gt; &lt;textarea id = “message” style=” width: 350px“ &gt;Here is a message!&lt;/ textarea&gt; &lt;/div &gt; &lt;div &gt; &lt;button id = “echo” onclick= “echo();” disabled =“disabled” &gt;Echo message &lt;/ button&gt; &lt;/div &gt; &lt;/div &gt; &lt;div id = “console-container”&gt; &lt;div id = “console”&gt;&lt;/ div&gt; &lt;/div&gt;&lt;/ div&gt;&lt;/ body&gt;&lt;/ html&gt; 注：最后只要注意你定义的springmvc拦截的路径规则和请求路径即可，我一开始总是报404错误，就是路径写错了。]]></content>
       <tags>
-        <tag>Java WebSocket</tag>
+        <tag>Java</tag>
+        <tag>WebSocket</tag>
       </tags>
   </entry>
   <entry>
