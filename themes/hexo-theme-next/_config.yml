@@ -157,14 +157,14 @@ baidu_push: false
 # Value after `||` delimeter is the name of FontAwesome icon. If icon (with or without delimeter) is not specified, question icon will be loaded.
 # External url should start with http:// or https://
 menu:
-  about: http://www.hllinc.cn/ || user
   home: / || home
-#  tags: /tags/ || tags
-#  categories: /categories/ || th
+  tags: /tags/ || tags
+  categories: /categories/ || th
   archives: /archives/ || archive
-  #schedule: /schedule/ || calendar
-  #sitemap: /sitemap.xml || sitemap
-  #commonweal: /404/ || heartbeat
+  about: /about/ || user
+#  schedule: /schedule/ || calendar
+#  sitemap: /sitemap.xml || sitemap
+  commonweal: /404/ || heartbeat
 
 # Enable / Disable menu icons / item badges.
 menu_settings:
@@ -670,7 +670,7 @@ gitalk:
   github_id: hllinc # Github repo owner
   repo: hllinc # Repository name to store issues
   client_id: 6234df9e08b49f6fb3c6 # Github Application Client ID
-  client_secret: 28464e9bdc575cda0513d5f220017a1ea05c0670 # Github Application Client Secret
+  client_secret: 3d39ae5b13a1ec9b40bfe21072907c8eb21b7084 # Github Application Client Secret
   admin_user: hllinc # GitHub repo owner and collaborators, only these guys can initialize github issues
   distraction_free_mode: true # Facebook-like distraction free mode
   # Gitalk's display language depends on user's browser or system environment
