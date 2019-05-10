@@ -1,1 +1,0 @@
-# hllinc's blog
