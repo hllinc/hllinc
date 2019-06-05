@@ -5,8 +5,8 @@ tags:
 - JavaScript
 categories:
 ---
+开箱即用工具代码：
 ```javascript
-
 // 缓存当前数据
 var tempDataArray = [{name:"linc",age:28},{name:"linda",age:26}];
 // 存储排序后的数据
