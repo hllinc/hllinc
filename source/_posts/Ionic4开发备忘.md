@@ -387,7 +387,6 @@ config.xml配置说明：
 <preference name="SplashScreenDelay" value="1500" />
 <preference name="Fullscreen" value="true" />
 <preference name="Orientation" value="landscape" />
-```
 <preference name="android-minSdkVersion" value="16" />
  android最小sdk版本
 
@@ -423,4 +422,4 @@ config.xml配置说明：
 
  <preference name="Orientation" value="landscape" />
  屏幕方向。Orientation设置可以让你锁定应用程序屏幕方向以阻止屏幕自动翻转。可选的值有：default，landscape(横屏)，portrait(竖屏)。
-
+```
