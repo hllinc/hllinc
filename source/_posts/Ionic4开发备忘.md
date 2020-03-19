@@ -1,7 +1,7 @@
 ---
 title: Ionic4开发备忘
 date: 2019-12-20 15:26:10
-tags:
+tags: ionic
 categories:
 ---
 Ionic是一款跨平台开发App的框架，详细介绍见官网：[https://ionicframework.com](https://ionicframework.com/docs/cli)
