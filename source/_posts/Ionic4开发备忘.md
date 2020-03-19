@@ -6,14 +6,14 @@ categories:
 ---
 Ionic是一款跨平台开发App的框架，详细介绍见官网：[https://ionicframework.com](https://ionicframework.com/docs/cli)
 
-##环境搭建
+## 环境搭建
 
 全局安装NodeJS和Ionic最新稳定版，安装命令如下：
 
 ```
 npm i -g cordova ionic
 ```
-##新建项目
+## 新建项目
 
 初始化项目命令如下：
 
@@ -21,7 +21,7 @@ npm i -g cordova ionic
 ionic start myIonicApp tabs
 ```
 其中的tabs为初始化项目模板，可选模板有blank,tabs,sidemenu,tutorial等，可以运行ionic start --list命令查看所有可用模板。
-##项目常用命令
+## 项目常用命令
 
 详细命令参考官网：[https://ionicframework.com/docs/cli](https://ionicframework.com/docs/cli)
 
@@ -71,7 +71,7 @@ cordova prepare
 ```
 ionic generate page pages/my-page
 ```
-##路由传参
+## 路由传参
 
 路由传参只能传递字符串参数，不能为复杂对象，当然也可以将复杂对象转成json再通过路由进行传参，但这种方式不被推荐，某些情况下转换的对象json中存在特殊字符的话会直接影响路由功能。
 
@@ -98,7 +98,7 @@ ngOnInit() {
  const id = this.route.snapshot.paramMap.get('id');
 }
 ```
-##组件传参
+## 组件传参
 
 这里的组件传参就可以直接传递复杂参数，当然它同样不适合上面我们所说的查看详情等场景，但在以下场景中它将为我们带来极大的方便。
 
@@ -136,7 +136,7 @@ export class ReceiveOrderPage implements OnInit {
  <p>{{params.name}}</p>
 </ion-content>
 ```
-##禁用菜单
+## 禁用菜单
 
 当我们使用menu功能时，一般会在全局添加menu左或右滑动唤出的功能，但在某些场景下，我们只希望在主页面中启用该功能，在子页面中禁用该功能，因为左右滑动在子页面可能会实现其他必要功能，此时我们需要在子页面中添加如下代码以禁用菜单唤出功能，代码如下：
 
@@ -147,7 +147,7 @@ ionViewWillEnter() {
  this.menuCtrl.enable(false);
 }
 ```
-##Flex布局
+## Flex布局
 
 某些情况下，采用Flex可以为布局带来更好的效果，css代码如下：
 
@@ -174,7 +174,7 @@ align-content: flex-start;
 效果如下图所示：
 ![图片](https://uploader.shimo.im/f/a1oAw02RFIw8UdD6.png!thumbnail)
 
-##Modal窗口
+## Modal窗口
 
 对于一些页面的打开方式我们可能不需要像普通页面那样具有返回功能，在打开的页面中提供一个关闭按钮，并且打开效果也不像普通页面那样从右向左滑入，而是具有弹出效果的打开，以达到提醒用户当前打开页面中的内容很重要的目的。比如，协议页面、登录/注册页面等。
 
@@ -201,7 +201,7 @@ closeModal() {
 }
 ```
 当然，这个modal中的component也是可以进行传参的，方式同组件传参。
-##拍照
+## 拍照
 
 脚本代码如下：
 
@@ -252,7 +252,7 @@ export class CameraPage implements OnInit {
  <ion-img [src]="imageData"></ion-img>
 </ion-content>
 ```
-##生命周期
+## 生命周期
 
 Ionic4中的生命周期函数和angualr7基本是一样的，下面我们看看Ionic4中的生命周期函数，以及生命周期函数的用法。  
 
@@ -338,11 +338,11 @@ export class Page01 implements OnInit {
 }
 ```
 注：本章节内容转载自网络：[http://www.ionic.wang/article-index-id-169.html](http://www.ionic.wang/article-index-id-169.html)
-##地图
+## 地图
 
 集成高德地图。
 
-##修改应用图标
+## 修改应用图标
   1. 命令
 ```
 ionic cordova resources
