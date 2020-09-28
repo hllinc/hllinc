@@ -1,0 +1,1410 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2">
+
+<link rel="stylesheet" href="/css/main.css?v=7.1.1">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=7.1.1">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=7.1.1">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=7.1.1">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=7.1.1" color="#222">
+
+
+
+
+
+
+
+<script id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '7.1.1',
+    sidebar: {"position":"left","display":"post","offset":12,"onmobile":false,"dimmer":false},
+    back2top: true,
+    back2top_sidebar: false,
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  <meta name="description" content="Ionic是一款跨平台开发App的框架，详细介绍见官网：https://ionicframework.com 环境搭建全局安装NodeJS和Ionic最新稳定版，安装命令如下： 1npm i -g cordova ionic 新建项目初始化项目命令如下： 1ionic start myIonicApp tabs 其中的tabs为初始化项目模板，可选模板有blank,tabs,sidemenu,tu">
+<meta name="keywords" content="ionic">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Ionic4开发备忘">
+<meta property="og:url" content="http://www.hllinc.cn/2019/12/20/Ionic4开发备忘/index.html">
+<meta property="og:site_name" content="Hllinc&#39;s Blog">
+<meta property="og:description" content="Ionic是一款跨平台开发App的框架，详细介绍见官网：https://ionicframework.com 环境搭建全局安装NodeJS和Ionic最新稳定版，安装命令如下： 1npm i -g cordova ionic 新建项目初始化项目命令如下： 1ionic start myIonicApp tabs 其中的tabs为初始化项目模板，可选模板有blank,tabs,sidemenu,tu">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="https://uploader.shimo.im/f/a1oAw02RFIw8UdD6.png!thumbnail">
+<meta property="og:image" content="https://uploader.shimo.im/f/km1Id4yU07spcNeL.png!thumbnail">
+<meta property="og:updated_time" content="2020-09-28T06:09:38.961Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Ionic4开发备忘">
+<meta name="twitter:description" content="Ionic是一款跨平台开发App的框架，详细介绍见官网：https://ionicframework.com 环境搭建全局安装NodeJS和Ionic最新稳定版，安装命令如下： 1npm i -g cordova ionic 新建项目初始化项目命令如下： 1ionic start myIonicApp tabs 其中的tabs为初始化项目模板，可选模板有blank,tabs,sidemenu,tu">
+<meta name="twitter:image" content="https://uploader.shimo.im/f/a1oAw02RFIw8UdD6.png!thumbnail">
+
+
+
+
+
+  
+  
+  <link rel="canonical" href="http://www.hllinc.cn/2019/12/20/Ionic4开发备忘/">
+
+
+
+<script id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>Ionic4开发备忘 | Hllinc's Blog</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .motion-element,
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-title { opacity: initial; }
+
+  .use-motion .logo,
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Hllinc's Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+      
+        <p class="site-subtitle">To be or not to be.</p>
+      
+    
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="切换导航栏">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+
+    
+    
+    
+      
+    
+
+    
+      
+    
+
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>首页</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-tags">
+
+    
+    
+    
+      
+    
+
+    
+      
+    
+
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签<span class="badge">6</span></a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-categories">
+
+    
+    
+    
+      
+    
+
+    
+      
+    
+
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>分类<span class="badge">1</span></a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+
+    
+    
+    
+      
+    
+
+    
+      
+    
+
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档<span class="badge">6</span></a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-about">
+
+    
+    
+    
+      
+    
+
+    
+      
+    
+
+    <a href="/about/" rel="section"><i class="menu-item-icon fa fa-fw fa-user"></i> <br>关于</a>
+
+  </li>
+
+      
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>搜索</a>
+        </li>
+      
+    </ul>
+  
+
+  
+    
+
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off" placeholder="搜索..." spellcheck="false" type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+
+    
+  
+  
+
+  
+
+  <a href="https://github.com/hllinc" class="github-corner" title="Follow me on GitHub" aria-label="Follow me on GitHub" rel="noopener" target="_blank"><svg width="80" height="80" viewbox="0 0 250 250" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"/><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"/><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"/></svg></a>
+
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://www.hllinc.cn/2019/12/20/Ionic4开发备忘/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Hllinc">
+      <meta itemprop="description" content="不积跬步，无以至千里。">
+      <meta itemprop="image" content="/images/avatar.jpeg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hllinc's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Ionic4开发备忘
+
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2019-12-20 15:26:10" itemprop="dateCreated datePublished" datetime="2019-12-20T15:26:10+08:00">2019-12-20</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2020-09-28 14:09:38" itemprop="dateModified" datetime="2020-09-28T14:09:38+08:00">2020-09-28</time>
+              
+            
+          </span>
+
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="post-meta-item-icon">
+            <i class="fa fa-eye"></i>
+             阅读次数： 
+            <span class="busuanzi-value" id="busuanzi_value_page_pv"></span>
+            </span>
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>Ionic是一款跨平台开发App的框架，详细介绍见官网：<a href="https://ionicframework.com/docs/cli" target="_blank" rel="noopener">https://ionicframework.com</a></p>
+<h2 id="环境搭建"><a href="#环境搭建" class="headerlink" title="环境搭建"></a>环境搭建</h2><p>全局安装NodeJS和Ionic最新稳定版，安装命令如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm i -g cordova ionic</span><br></pre></td></tr></table></figure>
+<h2 id="新建项目"><a href="#新建项目" class="headerlink" title="新建项目"></a>新建项目</h2><p>初始化项目命令如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ionic start myIonicApp tabs</span><br></pre></td></tr></table></figure>
+<p>其中的tabs为初始化项目模板，可选模板有blank,tabs,sidemenu,tutorial等，可以运行ionic start –list命令查看所有可用模板。</p>
+<h2 id="项目常用命令"><a href="#项目常用命令" class="headerlink" title="项目常用命令"></a>项目常用命令</h2><p>详细命令参考官网：<a href="https://ionicframework.com/docs/cli" target="_blank" rel="noopener">https://ionicframework.com/docs/cli</a></p>
+<ol>
+<li>启动项目</li>
+</ol>
+<p>ng serve -o</p>
+<ol start="2">
+<li><p>编译项目</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">ionic cordova prepare ios</span><br><span class="line">ionic cordova prepare android</span><br><span class="line">ionic cordova run android --prod --release</span><br><span class="line">ionic cordova run ios --prod --release</span><br><span class="line">ionic cordova build android --prod --release</span><br><span class="line">ionic cordova build ios --prod --release</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>管理平台</p>
+</li>
+</ol>
+<p>添加平台：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ionic cordova platform add android</span><br></pre></td></tr></table></figure>
+<p>删除平台：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cordova platform rm ios</span><br></pre></td></tr></table></figure></p>
+<p>根据配置文件安装平台：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cordova prepare</span><br></pre></td></tr></table></figure></p>
+<ol start="4">
+<li>管理插件</li>
+</ol>
+<p>添加插件：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ionic cordova plugin add cordova-sqlite-storage</span><br></pre></td></tr></table></figure>
+<p>删除插件：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ionic cordova plugin rm cordova-sqlite-storage</span><br></pre></td></tr></table></figure></p>
+<p>根据配置文件安装插件：<br>cordova prepare</p>
+<ol start="5">
+<li>自动创建代码命令<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ionic generate page pages/my-page</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<h2 id="路由传参"><a href="#路由传参" class="headerlink" title="路由传参"></a>路由传参</h2><p>路由传参只能传递字符串参数，不能为复杂对象，当然也可以将复杂对象转成json再通过路由进行传参，但这种方式不被推荐，某些情况下转换的对象json中存在特殊字符的话会直接影响路由功能。</p>
+<p>前端有localStorage这个比较强大的前端缓存工具，因为路由传参不适合传递复杂对象，我们还有一种方式就是将复杂对象存储在localStorage中，它的key放在路由参数中进行传递，然后到详情页面中通过这个key从localStorage中查询。显然，某些场景下也会出现下面的问题，但这的确是一个方法。关键前端缓存这块后面弄个专题说一下。</p>
+<p>在大部分场景中，比如查看订单列表中某一条数据的详细信息，通过路由传递一个id字段到详情页面就足够了，虽然前端可以缓存订单列表中已有的订单字段，但为了数据的准确性，这里还是推荐在详情页面根据id重新获取最新的详情数据。当然，得结合实际业务功能决定到底用何种方式。</p>
+<p>路由配置代码：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">const routes: Routes = [</span><br><span class="line">	  &#123;path: &apos;order-detail/:id&apos;, loadChildren: &apos;./pages/order-detail/order-detail.module#OrderDetailPageModule&apos;&#125;</span><br><span class="line">];</span><br></pre></td></tr></table></figure>
+<p>传递参数代码：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;ion-item routerLink=&quot;/order-detail/3&quot;&gt;&lt;/ion-item&gt;</span><br></pre></td></tr></table></figure></p>
+<p>接收参数代码：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">constructor(private route: ActivatedRoute) &#123;</span><br><span class="line">&#125;</span><br><span class="line">ngOnInit() &#123;</span><br><span class="line"> const id = this.route.snapshot.paramMap.get(&apos;id&apos;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h2 id="组件传参"><a href="#组件传参" class="headerlink" title="组件传参"></a>组件传参</h2><p>这里的组件传参就可以直接传递复杂参数，当然它同样不适合上面我们所说的查看详情等场景，但在以下场景中它将为我们带来极大的方便。</p>
+<p>涉及到流程表单的场景：用户在前端需要操作一个流程表单，分好几步，第一步干嘛，第二步干嘛，每一步都会在前端录入一些必要数据，而且这些数据可能在下一步的表单操作中要使用到，此时，组件传参就发挥了它的威力。</p>
+<p>在使用该component的module中需要配置entryComponents，代码如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">@NgModule(&#123;</span><br><span class="line"> declarations: [ReceiveOrderPage],</span><br><span class="line"> entryComponents: [ReceiveOrderPage]</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<p>在传递参数的component中代码如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">constructor(private modalCtrl: ModalController) &#123;</span><br><span class="line">&#125;</span><br><span class="line">async receiveOrder() &#123;</span><br><span class="line"> const modal = await this.modalCtrl.create(&#123;</span><br><span class="line">   component: ReceiveOrderPage,</span><br><span class="line">   componentProps: &#123;</span><br><span class="line">     params: &#123;id: 1, name: &apos;hllinc&apos;&#125;</span><br><span class="line">   &#125;,</span><br><span class="line">   animated: true</span><br><span class="line"> &#125;);</span><br><span class="line"> return await modal.present();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>接收参数代码：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">export class ReceiveOrderPage implements OnInit &#123;</span><br><span class="line"> @Input() params;</span><br><span class="line">&#125;</span><br><span class="line">&lt;ion-content padding&gt;</span><br><span class="line"> &lt;p&gt;&#123;&#123;params.name&#125;&#125;&lt;/p&gt;</span><br><span class="line">&lt;/ion-content&gt;</span><br></pre></td></tr></table></figure></p>
+<h2 id="禁用菜单"><a href="#禁用菜单" class="headerlink" title="禁用菜单"></a>禁用菜单</h2><p>当我们使用menu功能时，一般会在全局添加menu左或右滑动唤出的功能，但在某些场景下，我们只希望在主页面中启用该功能，在子页面中禁用该功能，因为左右滑动在子页面可能会实现其他必要功能，此时我们需要在子页面中添加如下代码以禁用菜单唤出功能，代码如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">constructor(private menuCtrl: MenuController) &#123;</span><br><span class="line">&#125;</span><br><span class="line">ionViewWillEnter() &#123;</span><br><span class="line"> this.menuCtrl.enable(false);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="Flex布局"><a href="#Flex布局" class="headerlink" title="Flex布局"></a>Flex布局</h2><p>某些情况下，采用Flex可以为布局带来更好的效果，css代码如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">.dayPlat &#123;</span><br><span class="line">display: flex;</span><br><span class="line">flex-wrap: wrap;</span><br><span class="line">flex-direction: row;</span><br><span class="line">align-content: flex-start;</span><br><span class="line">.day &#123;</span><br><span class="line"> font-size: 14px;</span><br><span class="line"> width: 60px;</span><br><span class="line"> height: 60px;</span><br><span class="line"> text-align: center;</span><br><span class="line"> line-height: 60px;</span><br><span class="line"> margin: 10px;</span><br><span class="line"> border: 1px solid #dddddd;</span><br><span class="line"> color: #555;</span><br><span class="line"> -webkit-border-radius: 5px;</span><br><span class="line"> -moz-border-radius: 5px;</span><br><span class="line"> border-radius: 5px;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>效果如下图所示：<br><img src="https://uploader.shimo.im/f/a1oAw02RFIw8UdD6.png!thumbnail" alt="图片"></p>
+<h2 id="Modal窗口"><a href="#Modal窗口" class="headerlink" title="Modal窗口"></a>Modal窗口</h2><p>对于一些页面的打开方式我们可能不需要像普通页面那样具有返回功能，在打开的页面中提供一个关闭按钮，并且打开效果也不像普通页面那样从右向左滑入，而是具有弹出效果的打开，以达到提醒用户当前打开页面中的内容很重要的目的。比如，协议页面、登录/注册页面等。</p>
+<p>打开Modal窗口，代码如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">constructor(private modalCtrl: ModalController) &#123;</span><br><span class="line">&#125;</span><br><span class="line">async openProtocol() &#123;</span><br><span class="line"> const modal = await this.modalCtrl.create(&#123;</span><br><span class="line">   component: ProtocolPage</span><br><span class="line"> &#125;);</span><br><span class="line"> return await modal.present();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>关闭Modal窗口需要在打开的component中添加如下代码：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&lt;ion-button color=&quot;primary&quot; (click)=&quot;closeModal()&quot;&gt;</span><br><span class="line"> &lt;ion-icon name=&quot;close&quot; color=&quot;light&quot;&gt;&lt;/ion-icon&gt;</span><br><span class="line">&lt;/ion-button&gt;</span><br><span class="line">constructor(private modalCtrl: ModalController) &#123; &#125;</span><br><span class="line">closeModal() &#123;</span><br><span class="line"> this.modalCtrl.dismiss();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>当然，这个modal中的component也是可以进行传参的，方式同组件传参。</p>
+<h2 id="拍照"><a href="#拍照" class="headerlink" title="拍照"></a>拍照</h2><p>脚本代码如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">import &#123;Component, OnInit&#125; from &apos;@angular/core&apos;;</span><br><span class="line">import &#123;Camera, CameraOptions&#125; from &apos;@ionic-native/camera/ngx&apos;;</span><br><span class="line">@Component(&#123;</span><br><span class="line"> selector: &apos;app-camera&apos;,</span><br><span class="line"> templateUrl: &apos;./camera.page.html&apos;,</span><br><span class="line"> styleUrls: [&apos;./camera.page.scss&apos;],</span><br><span class="line">&#125;)</span><br><span class="line">export class CameraPage implements OnInit &#123;</span><br><span class="line"> imageData;</span><br><span class="line"> constructor(private camera: Camera) &#123;</span><br><span class="line"> &#125;</span><br><span class="line"> ngOnInit() &#123;</span><br><span class="line"> &#125;</span><br><span class="line"> takePhone() &#123;</span><br><span class="line">   const options: CameraOptions = &#123;</span><br><span class="line">     quality: 100,</span><br><span class="line">     destinationType: this.camera.DestinationType.DATA_URL,</span><br><span class="line">     encodingType: this.camera.EncodingType.JPEG,</span><br><span class="line">     mediaType: this.camera.MediaType.PICTURE</span><br><span class="line">   &#125;;</span><br><span class="line">   this.camera.getPicture(options).then((imageData) =&gt; &#123;</span><br><span class="line">     // imageData is either a base64 encoded string or a file URI</span><br><span class="line">     // If it&apos;s base64 (DATA_URL)</span><br><span class="line">     let base64Image = &apos;data:image/jpeg;base64,&apos; + imageData;</span><br><span class="line">     this.imageData = base64Image;</span><br><span class="line">   &#125;, (err) =&gt; &#123;</span><br><span class="line">     // Handle error</span><br><span class="line">   &#125;);</span><br><span class="line"> &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>视图代码如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">&lt;ion-header&gt;</span><br><span class="line"> &lt;ion-toolbar&gt;</span><br><span class="line">   &lt;ion-buttons slot=&quot;start&quot;&gt;</span><br><span class="line">     &lt;ion-back-button [text]=&quot;&apos;返回&apos;&quot;&gt;&lt;/ion-back-button&gt;</span><br><span class="line">   &lt;/ion-buttons&gt;</span><br><span class="line">   &lt;ion-title&gt;camera&lt;/ion-title&gt;</span><br><span class="line"> &lt;/ion-toolbar&gt;</span><br><span class="line">&lt;/ion-header&gt;</span><br><span class="line">&lt;ion-content padding&gt;</span><br><span class="line"> &lt;ion-button (click)=&quot;takePhone()&quot;&gt;拍照&lt;/ion-button&gt;</span><br><span class="line"> &lt;ion-img [src]=&quot;imageData&quot;&gt;&lt;/ion-img&gt;</span><br><span class="line">&lt;/ion-content&gt;</span><br></pre></td></tr></table></figure></p>
+<h2 id="生命周期"><a href="#生命周期" class="headerlink" title="生命周期"></a>生命周期</h2><p>Ionic4中的生命周期函数和angualr7基本是一样的，下面我们看看Ionic4中的生命周期函数，以及生命周期函数的用法。  </p>
+<p><strong>Ionic4中内置的生命周期函数：</strong></p>
+<p><strong>ionViewWillEnter </strong>—当进入一个页面时触发(如果它从堆栈返回)</p>
+<p><strong>ionViewDidEnter </strong>—进入后触发</p>
+<p><strong>ionViewWillLeave </strong>—如果页面将离开触发</p>
+<p><strong>ionViewDidLeave </strong>— 在页面离开后触发</p>
+<p><strong>ionViewWillUnload </strong>— 在Angular中没有触发，因为这里你必须使用ngOnDestroy</p>
+<p><strong>Ionic4中使用Angular生命周期函数：</strong></p>
+<p>1、Ionic4中的生命周期函数<strong>ngOnChanges </strong>当被绑定的输入属性的值发生变化时调用(父子组件传值的时候会触发)</p>
+<p>2、Ionic4中的生命周期函数<strong>ngOnInit </strong>请求数据一般放在这个里面  （重要*）</p>
+<p>3、Ionic4中的生命周期函数<strong>ngDoCheck</strong> 检测，并在发生 Angular 无法或不愿意自己检测的变化时作出反应</p>
+<p>4、Ionic4中的生命周期函数 <strong>ngAfterContentInit </strong>当把内容投影进组件之后调用</p>
+<p>5、Ionic4中的生命周期函数 <strong>ngAfterContentChecked </strong>每次完成被投影组件内容的变更检测之后调用</p>
+<p>6、Ionic4中的生命周期函数 <strong>ngAfterViewInit  </strong>初始化完组件视图及其子视图之后调用（dom操作放在这个里面） （重要）</p>
+<p>7、Ionic4中的生命周期函数 <strong>ngAfterViewInit</strong>  每次做完组件视图和子视图的变更检测之后调用</p>
+<p>8、Ionic4中的生命周期函数  <strong>ngOnDestroy  </strong>组件销毁后执行 （重要）</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line">constructor() &#123; </span><br><span class="line">  console.log(&apos;00构造函数执行了---除了使用简单的值对局部变量进行初始化之外，什么都不应该做&apos;)</span><br><span class="line">&#125;</span><br><span class="line">ngOnChanges() &#123;</span><br><span class="line">  console.log(&apos;01ngOnChages执行了---当被绑定的输入属性的值发生变化时调用(父子组件传值的时候会触发)&apos;); </span><br><span class="line">&#125;</span><br><span class="line">ngOnInit() &#123;</span><br><span class="line">    console.log(&apos;02ngOnInit执行了--- 请求数据一般放在这个里面&apos;);     </span><br><span class="line">&#125;</span><br><span class="line">ngDoCheck() &#123;</span><br><span class="line">    //写一些自定义的操作</span><br><span class="line">    console.log(&apos;03ngDoCheck执行了---检测，并在发生 Angular 无法或不愿意自己检测的变化时作出反应&apos;);</span><br><span class="line">    if(this.userinfo!==this.oldUserinfo)&#123;</span><br><span class="line">        console.log(`你从$&#123;this.oldUserinfo&#125;改成$&#123;this.userinfo&#125;`);</span><br><span class="line">        this.oldUserinfo = this.userinfo;</span><br><span class="line">    &#125;else&#123;            </span><br><span class="line">        console.log(&quot;数据没有变化&quot;);          </span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">ngAfterContentInit() &#123;</span><br><span class="line">    console.log(&apos;04ngAfterContentInit执行了---当把内容投影进组件之后调用&apos;);</span><br><span class="line">&#125;</span><br><span class="line">ngAfterContentChecked() &#123;</span><br><span class="line">    console.log(&apos;05ngAfterContentChecked执行了---每次完成被投影组件内容的变更检测之后调用&apos;);</span><br><span class="line">&#125;</span><br><span class="line">ngAfterViewInit(): void &#123;     </span><br><span class="line">    console.log(&apos;06 ngAfterViewInit执行了----初始化完组件视图及其子视图之后调用（dom操作放在这个里面）&apos;);</span><br><span class="line">&#125;</span><br><span class="line">ngAfterViewChecked() &#123;</span><br><span class="line">    console.log(&apos;07ngAfterViewChecked执行了----每次做完组件视图和子视图的变更检测之后调用&apos;);</span><br><span class="line">&#125;</span><br><span class="line">ngOnDestroy() &#123;</span><br><span class="line">    console.log(&apos;08ngOnDestroy执行了····&apos;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>Ionic4内置生命周期函数使用demo<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">export class Page01 implements OnInit &#123;</span><br><span class="line">  constructor() &#123; </span><br><span class="line">  &#125;</span><br><span class="line">  ngOnInit() &#123;</span><br><span class="line">  &#125;</span><br><span class="line">  ionViewWillEnter()&#123;</span><br><span class="line">    console.log(&apos;ionViewWillEnter&apos;);</span><br><span class="line">  &#125;</span><br><span class="line">  ionViewDidEnter()&#123;</span><br><span class="line">    console.log(&apos;ionViewDidEnter&apos;);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>注：本章节内容转载自网络：<a href="http://www.ionic.wang/article-index-id-169.html" target="_blank" rel="noopener">http://www.ionic.wang/article-index-id-169.html</a></p>
+<h2 id="地图"><a href="#地图" class="headerlink" title="地图"></a>地图</h2><p>集成高德地图。</p>
+<h2 id="修改应用图标"><a href="#修改应用图标" class="headerlink" title="修改应用图标"></a>修改应用图标</h2><ol>
+<li><p>命令</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">ionic cordova resources</span><br><span class="line">ionic cordova resources --icon</span><br><span class="line">ionic cordova resources --splash</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>准备</p>
+<ul>
+<li>准备一张大小为1024*1024的图片文件作为APP的图标（命名：icon）</li>
+<li>准备一张大小为2732 <em> 2732(ionic2为2208 </em> 2208)的图片作为APP的启动界面（命名：splash）</li>
+<li>两张图片的格式为png、psd或ai都可</li>
+</ul>
+</li>
+<li>修改方法</li>
+</ol>
+<p>1.将准备好的两张图片（注意分辨率和图片格式）替换到web-app目录下的resources文件夹下。</p>
+<p>2.执行ionic cordova resources命令，或分别执行ionic cordova resources –icon和ionic cordova resources –splash。</p>
+<ol start="4">
+<li>说明</li>
+</ol>
+<p>一般执行第一条命令（ionic cordova resources）即可，如失败（一般都是网络问题，有的是图片问题），网络问题：执行后第二、三条命令（ionic cordova resources –icon和ionic cordova resources –splash），图片问题：修改或更换图片。</p>
+<p>如果在启动界面不显示“小圆圈”（进度圈），修改config.xml文件<preference name="ShowSplashScreenSpinner" value="false">的value为false，为true为显示。如下图：</preference></p>
+<p><img src="https://uploader.shimo.im/f/km1Id4yU07spcNeL.png!thumbnail" alt="图片"></p>
+<ol start="5">
+<li>其他</li>
+</ol>
+<p>config.xml配置说明：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br></pre></td><td class="code"><pre><span class="line">&lt;preference name=&quot;webviewbounce&quot; value=&quot;false&quot; /&gt;</span><br><span class="line">&lt;preference name=&quot;UIWebViewBounce&quot; value=&quot;false&quot; /&gt;</span><br><span class="line">&lt;preference name=&quot;DisallowOverscroll&quot; value=&quot;true&quot; /&gt;</span><br><span class="line">&lt;preference name=&quot;android-minSdkVersion&quot; value=&quot;16&quot; /&gt;</span><br><span class="line">&lt;preference name=&quot;BackupWebStorage&quot; value=&quot;none&quot; /&gt;</span><br><span class="line">&lt;preference name=&quot;ShowSplashScreen&quot; value=&quot;true&quot; /&gt;</span><br><span class="line">&lt;preference name=&quot;AutoHideSplashScreen&quot; value=&quot;false&quot; /&gt;</span><br><span class="line">&lt;preference name=&quot;ShowSplashScreenSpinner&quot; value=&quot;false&quot; /&gt;</span><br><span class="line">&lt;preference name=&quot;SplashMaintainAspectRatio&quot; value=&quot;true&quot; /&gt;</span><br><span class="line">&lt;preference name=&quot;FadeSplashScreenDuration&quot; value=&quot;300&quot; /&gt;</span><br><span class="line">&lt;preference name=&quot;SplashShowOnlyFirstTime&quot; value=&quot;false&quot; /&gt;</span><br><span class="line">&lt;preference name=&quot;SplashScreen&quot; value=&quot;screen&quot; /&gt;</span><br><span class="line">&lt;preference name=&quot;SplashScreenDelay&quot; value=&quot;1500&quot; /&gt;</span><br><span class="line">&lt;preference name=&quot;Fullscreen&quot; value=&quot;true&quot; /&gt;</span><br><span class="line">&lt;preference name=&quot;Orientation&quot; value=&quot;landscape&quot; /&gt;</span><br><span class="line">&lt;preference name=&quot;android-minSdkVersion&quot; value=&quot;16&quot; /&gt;</span><br><span class="line"> android最小sdk版本</span><br><span class="line"></span><br><span class="line"> &lt;preference name=&quot;BackupWebStorage&quot; value=&quot;none&quot; /&gt;</span><br><span class="line"> 网络备份存储</span><br><span class="line"></span><br><span class="line"> &lt;preference name=&quot;ShowSplashScreen&quot; value=&quot;true&quot; /&gt;</span><br><span class="line"> 显示启动界面</span><br><span class="line"></span><br><span class="line"> &lt;preference name=&quot;AutoHideSplashScreen&quot; value=&quot;false&quot; /&gt;</span><br><span class="line"> 自动隐藏启动界面</span><br><span class="line"></span><br><span class="line"> &lt;preference name=&quot;ShowSplashScreenSpinner&quot; value=&quot;false&quot; /&gt;</span><br><span class="line"> 显示启动界面的进度圈</span><br><span class="line"></span><br><span class="line"> &lt;preference name=&quot;SplashMaintainAspectRatio&quot; value=&quot;true&quot; /&gt;</span><br><span class="line"> 屏幕保持长宽比</span><br><span class="line"></span><br><span class="line"> &lt;preference name=&quot;FadeSplashScreenDuration&quot; value=&quot;300&quot; /&gt;</span><br><span class="line"> 启动界面消失延迟</span><br><span class="line"></span><br><span class="line"> &lt;preference name=&quot;SplashShowOnlyFirstTime&quot; value=&quot;false&quot; /&gt;</span><br><span class="line"> 启动界面只在第一次显示</span><br><span class="line"></span><br><span class="line"> &lt;preference name=&quot;SplashScreen&quot; value=&quot;screen&quot; /&gt;</span><br><span class="line"> 启动界面</span><br><span class="line"></span><br><span class="line"> &lt;preference name=&quot;SplashScreenDelay&quot; value=&quot;1500&quot; /&gt;</span><br><span class="line"> 启动界面延迟</span><br><span class="line"></span><br><span class="line"> &lt;preference name=&quot;Fullscreen&quot; value=&quot;false&quot; /&gt;</span><br><span class="line"> 全屏显示</span><br><span class="line"></span><br><span class="line"> &lt;preference name=&quot;Orientation&quot; value=&quot;landscape&quot; /&gt;</span><br><span class="line"> 屏幕方向。Orientation设置可以让你锁定应用程序屏幕方向以阻止屏幕自动翻转。可选的值有：default，landscape(横屏)，portrait(竖屏)。</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/ionic/" rel="tag"># ionic</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/06/05/JavaScript前端对象数组排序核心方法（支持多列排序）/" rel="next" title="JavaScript前端对象数组排序核心方法（支持多列排序）">
+                <i class="fa fa-chevron-left"></i> JavaScript前端对象数组排序核心方法（支持多列排序）
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2020/09/28/前端技术架构/" rel="prev" title="前端技术架构">
+                前端技术架构 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+  </div>
+
+
+          </div>
+          
+
+  
+    <div class="comments" id="gitalk-container">
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/images/avatar.jpeg" alt="Hllinc">
+            
+              <p class="site-author-name" itemprop="name">Hllinc</p>
+              <div class="site-description motion-element" itemprop="description">不积跬步，无以至千里。</div>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">6</span>
+                    <span class="site-state-item-name">日志</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  
+                    
+                      <a href="/categories/">
+                    
+                  
+                    
+                    
+                      
+                    
+                    <span class="site-state-item-count">1</span>
+                    <span class="site-state-item-name">分类</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  
+                    
+                      <a href="/tags/">
+                    
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">6</span>
+                    <span class="site-state-item-name">标签</span>
+                  </a>
+                </div>
+              
+            </nav>
+          
+
+          
+
+          
+
+          
+            <div class="links-of-author motion-element">
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="https://github.com/hllinc" title="GitHub &rarr; https://github.com/hllinc" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="mailto:hllinc@163.com" title="E-Mail &rarr; mailto:hllinc@163.com" rel="noopener" target="_blank"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="https://weibo.com/hllinc" title="Weibo &rarr; https://weibo.com/hllinc" rel="noopener" target="_blank"><i class="fa fa-fw fa-weibo"></i>Weibo</a>
+                </span>
+              
+            </div>
+          
+
+          
+
+          
+          
+
+          
+            
+          
+          <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width="330" height="450" src="//music.163.com/outchain/player?type=0&id=486899256&auto=1&height=430"></iframe>
+
+        </div>
+      </div>
+
+      
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#环境搭建"><span class="nav-number">1.</span> <span class="nav-text">环境搭建</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#新建项目"><span class="nav-number">2.</span> <span class="nav-text">新建项目</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#项目常用命令"><span class="nav-number">3.</span> <span class="nav-text">项目常用命令</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#路由传参"><span class="nav-number">4.</span> <span class="nav-text">路由传参</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#组件传参"><span class="nav-number">5.</span> <span class="nav-text">组件传参</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#禁用菜单"><span class="nav-number">6.</span> <span class="nav-text">禁用菜单</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Flex布局"><span class="nav-number">7.</span> <span class="nav-text">Flex布局</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Modal窗口"><span class="nav-number">8.</span> <span class="nav-text">Modal窗口</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#拍照"><span class="nav-number">9.</span> <span class="nav-text">拍照</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#生命周期"><span class="nav-number">10.</span> <span class="nav-text">生命周期</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#地图"><span class="nav-number">11.</span> <span class="nav-text">地图</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#修改应用图标"><span class="nav-number">12.</span> <span class="nav-text">修改应用图标</span></a></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+  
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Hllinc</span>
+
+  
+
+  
+</div>
+
+
+
+
+
+
+
+
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="post-meta-item-icon">
+      <i class="fa fa-user"></i>
+    </span>
+    <span class="site-uv" title="总访客量">
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+    </span>
+  
+
+  
+    <span class="post-meta-divider">|</span>
+  
+
+  
+    <span class="post-meta-item-icon">
+      <i class="fa fa-eye"></i>
+    </span>
+    <span class="site-pv" title="总访问量">
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+    </span>
+  
+</div>
+
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+    
+
+    
+  </div>
+
+  
+
+<script>
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+
+  
+
+
+  <script src="/js/utils.js?v=7.1.1"></script>
+
+  <script src="/js/motion.js?v=7.1.1"></script>
+
+
+
+  
+  
+
+
+  <script src="/js/schemes/muse.js?v=7.1.1"></script>
+
+
+
+
+  
+  <script src="/js/scrollspy.js?v=7.1.1"></script>
+<script src="/js/post-details.js?v=7.1.1"></script>
+
+
+
+  
+
+
+  <script src="/js/next-boot.js?v=7.1.1"></script>
+
+
+  
+
+  
+
+  
+
+  
+
+
+  
+    
+
+<script src="//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
+
+
+
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.css">
+
+
+
+<script src="//cdn.jsdelivr.net/npm/js-md5@0.7.3/src/md5.min.js"></script>
+
+<script>
+  var gitalk = new Gitalk({
+    clientID: '6234df9e08b49f6fb3c6',
+    clientSecret: '3d39ae5b13a1ec9b40bfe21072907c8eb21b7084',
+    repo: 'hllinc',
+    owner: 'hllinc',
+    admin: ['hllinc'],
+    id: md5(location.pathname),
+    
+      language: window.navigator.language || window.navigator.userLanguage,
+    
+    distractionFreeMode: 'true'
+  });
+  gitalk.render('gitalk-container');
+</script>
+
+  
+
+
+  
+  <script>
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url).replace(/\/{2,}/g, '/');
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x"></i></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x"></i></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
